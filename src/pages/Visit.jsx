@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import VisitTable from "../components/VisitTable";
 
 function Visit() {
   const [visits, setVisits] = useState([]);
@@ -23,15 +24,7 @@ function Visit() {
   return (
     <>
       <h1>Visit Page</h1>
-      {visits.map((visit) => (
-        <div key={visit.id}>
-          <div>{visit.date}</div>
-          <div>{visit.visit_purpose}</div>
-          <div>{visit.treatment}</div>
-          <div>{visit.balance}</div>
-          <br />
-        </div>
-      ))}
+      <VisitTable />
     </>
   );
 }
