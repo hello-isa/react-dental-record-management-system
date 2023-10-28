@@ -5,11 +5,13 @@ import {
   flexRender,
   getPaginationRowModel,
   getFilteredRowModel,
+  getSortedRowModel,
 } from "@tanstack/react-table";
 
 function VisitTable() {
   const [visits, setVisits] = useState([]);
   const [filtering, setFiltering] = useState("");
+  const [sorting, setSorting] = useState([]);
 
   const fetchVisitData = () => {
     const jsonFileUrl =
@@ -56,10 +58,13 @@ function VisitTable() {
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     state: {
       globalFilter: filtering,
+      sorting: sorting,
     },
     onGlobalFilterChange: setFiltering,
+    onSortingChange: setSorting,
   });
 
   return (
@@ -75,11 +80,19 @@ function VisitTable() {
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th
+                  key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
+                >
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
                   )}
+                  {
+                    { asc: "🔽", desc: "🔼" }[
+                      header.column.getIsSorted() ?? null
+                    ]
+                  }
                 </th>
               ))}
             </tr>
