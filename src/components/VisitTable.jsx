@@ -32,6 +32,7 @@ function VisitTable() {
 
   const data = visits;
 
+  // JSDoc for autocompletion
   /**@type import('@tanstack/react-table').ColumnDef<any>*/
   const columns = [
     {
@@ -112,22 +113,31 @@ function VisitTable() {
         </tbody>
       </table>
 
+      {/* Pagination */}
       <div>
-        <button onClick={() => table.setPageIndex(0)}>First Page</button>
+        Page{""}
+        <strong>
+          {1} of {table.getPageCount()}
+        </strong>
+      </div>
+
+      {/* Pagination button */}
+      <div>
+        <button onClick={() => table.setPageIndex(0)}>{"<<"}</button>
         <button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous Page
+          {"<"}
         </button>
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next Page
+          {">"}
         </button>
         <button onClick={() => table.setPageIndex(!table.getPageCount() - 1)}>
-          Last Page
+          {">>"}
         </button>
       </div>
     </>
