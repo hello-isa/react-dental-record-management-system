@@ -13,6 +13,7 @@ function VisitTable() {
   const [filtering, setFiltering] = useState("");
   const [sorting, setSorting] = useState([]);
 
+  // Fetch API Mock Data
   const fetchVisitData = () => {
     const jsonFileUrl =
       "https://raw.githubusercontent.com/hello-isa/react-dental-record-management-system/main/visit-page-mock-data.json";
@@ -70,12 +71,15 @@ function VisitTable() {
 
   return (
     <>
+      {/* Filtering */}
       <input
         type="text"
         placeholder="Search"
         value={filtering}
         onChange={(e) => setFiltering(e.target.value)}
       />
+
+      {/* Table */}
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -89,6 +93,7 @@ function VisitTable() {
                     header.column.columnDef.header,
                     header.getContext()
                   )}
+                  {/* Sorting */}
                   {
                     { asc: "🔽", desc: "🔼" }[
                       header.column.getIsSorted() ?? null
@@ -99,7 +104,6 @@ function VisitTable() {
             </tr>
           ))}
         </thead>
-
         <tbody>
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id}>
@@ -117,6 +121,22 @@ function VisitTable() {
       <div>
         Page {table.getState().pagination.pageIndex + 1} of{" "}
         {table.getPageCount()}
+      </div>
+
+      {/* Page Results */}
+      <div>
+        <select
+          value={table.getState().pagination.pageSize}
+          onChange={(e) => {
+            table.setPageSize(Number(e.target.value));
+          }}
+        >
+          {[5, 10, 20, 30].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Pagination button */}
