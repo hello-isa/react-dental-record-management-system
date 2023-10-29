@@ -103,12 +103,12 @@ function VisitTable() {
         {/* Table */}
         <div className="flex flex-col rounded-lg border-2">
           <table className="divide-y divide-gray-200">
-            <thead className="bg-gray-50 ">
+            <thead className="bg-gray-50">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
                     <th
-                      className="py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider"
+                      className="py-3 px-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider"
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
                     >
@@ -124,6 +124,9 @@ function VisitTable() {
                       }
                     </th>
                   ))}
+                  <th className="py-3 px-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider">
+                    Action
+                  </th>
                 </tr>
               ))}
             </thead>
@@ -138,6 +141,12 @@ function VisitTable() {
                       )}
                     </td>
                   ))}
+                  <td className="text-center">
+                    {/* View Button */}
+                    <button className="border-2 rounded-lg px-2 bg-cyan-600 hover:bg-cyan-800 text-white">
+                      View
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
