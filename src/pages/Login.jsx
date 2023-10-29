@@ -47,7 +47,7 @@ function Login() {
 
         {/* Log in button */}
         <div className="my-5">
-          <button className="rounded-lg border-2 h-12 w-96 bg-green-400 text-white">
+          <button className="rounded-lg border-2 h-12 w-96 bg-green-400 hover:bg-green-600 text-white">
             Log in
           </button>
         </div>
