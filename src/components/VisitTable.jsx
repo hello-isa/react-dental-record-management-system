@@ -115,10 +115,8 @@ function VisitTable() {
 
       {/* Pagination */}
       <div>
-        Page{""}
-        <strong>
-          {1} of {table.getPageCount()}
-        </strong>
+        Page {table.getState().pagination.pageIndex + 1} of{" "}
+        {table.getPageCount()}
       </div>
 
       {/* Pagination button */}
