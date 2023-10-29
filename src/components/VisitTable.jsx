@@ -78,7 +78,7 @@ function VisitTable() {
 
   return (
     <>
-      <div className="mt-12 mx-12 mb-10">
+      <div className="mt-10 mx-12 mb-10">
         <div className="flex flex-row justify-between mb-6">
           {/* Add Visit */}
           <div>
@@ -146,7 +146,7 @@ function VisitTable() {
 
         <div className="flex flex-row justify-between items-center mt-4">
           {/* Pagination */}
-          <div className="pl-16">
+          <div className="pl-2">
             Page{" "}
             <strong>
               {table.getState().pagination.pageIndex + 1} of{" "}
@@ -172,31 +172,35 @@ function VisitTable() {
           </div>
 
           {/* Pagination button */}
-          <div className="pr-16">
+          <div className="pr-2">
             <button
               className="bg-gray-50 hover:bg-gray-300 rounded-l-lg border border-r-black px-2"
               onClick={() => table.setPageIndex(0)}
             >
+              {/* First Page */}
               <RxDoubleArrowLeft size={22} />
             </button>
             <button
               className="bg-gray-50 hover:bg-gray-300 border border-r-black px-2"
-              onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
+              onClick={() => table.previousPage()}
             >
+              {/* Previous Page */}
               <RxChevronLeft size={22} />
             </button>
             <button
               className="bg-gray-50 hover:bg-gray-300 border border-r-black px-2"
-              onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
+              onClick={() => table.nextPage()}
             >
+              {/* Next Page */}
               <RxChevronRight size={22} />
             </button>
             <button
               className="bg-gray-50 hover:bg-gray-300 rounded-r-lg px-2"
-              onClick={() => table.setPageIndex(!table.getPageCount() - 1)}
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             >
+              {/* Last Page */}
               <RxDoubleArrowRight size={22} />
             </button>
           </div>
