@@ -8,6 +8,12 @@ import {
   getSortedRowModel,
 } from "@tanstack/react-table";
 import { AiOutlinePlus } from "react-icons/ai";
+import {
+  RxDoubleArrowLeft,
+  RxDoubleArrowRight,
+  RxChevronLeft,
+  RxChevronRight,
+} from "react-icons/rx";
 
 function VisitTable() {
   const [visits, setVisits] = useState([]);
@@ -72,7 +78,7 @@ function VisitTable() {
 
   return (
     <>
-      <div className="mt-12 mx-12">
+      <div className="mt-12 mx-12 mb-10">
         <div className="flex flex-row justify-between mb-6">
           {/* Add Visit */}
           <div>
@@ -85,7 +91,7 @@ function VisitTable() {
           {/* Filtering */}
           <div>
             <input
-              className="rounded-lg border-2 h-10 w-40 border-gray-400 pl-2"
+              className="rounded-lg border-2 h-10 w-40 border-gray-300 pl-2"
               type="text"
               placeholder="Search"
               value={filtering}
@@ -96,12 +102,13 @@ function VisitTable() {
 
         {/* Table */}
         <div className="flex flex-col rounded-lg border-2">
-          <table>
-            <thead>
+          <table className="divide-y divide-gray-200">
+            <thead className="bg-gray-50 ">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
                     <th
+                      className="py-3 text-center text-sm font-bold text-gray-500 uppercase tracking-wider"
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
                     >
@@ -120,11 +127,11 @@ function VisitTable() {
                 </tr>
               ))}
             </thead>
-            <tbody>
+            <tbody className="bg-white divide-y divide-gray-200">
               {table.getRowModel().rows.map((row) => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>
+                    <td className="px-2 py-4 text-center" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -137,46 +144,62 @@ function VisitTable() {
           </table>
         </div>
 
-        {/* Pagination */}
-        <div>
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
-          {table.getPageCount()}
-        </div>
+        <div className="flex flex-row justify-between items-center mt-4">
+          {/* Pagination */}
+          <div className="pl-16">
+            Page{" "}
+            <strong>
+              {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getPageCount()}
+            </strong>
+          </div>
 
-        {/* Page Results */}
-        <div>
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={(e) => {
-              table.setPageSize(Number(e.target.value));
-            }}
-          >
-            {[5, 10, 20, 30].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
+          {/* Page Results */}
+          <div className="ml-4">
+            <select
+              className="bg-gray-50 hover:bg-gray-300 rounded-lg px-2"
+              value={table.getState().pagination.pageSize}
+              onChange={(e) => {
+                table.setPageSize(Number(e.target.value));
+              }}
+            >
+              {[5, 10, 20, 30].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  Show {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        {/* Pagination button */}
-        <div>
-          <button onClick={() => table.setPageIndex(0)}>{"<<"}</button>
-          <button
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<"}
-          </button>
-          <button
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            {">"}
-          </button>
-          <button onClick={() => table.setPageIndex(!table.getPageCount() - 1)}>
-            {">>"}
-          </button>
+          {/* Pagination button */}
+          <div className="pr-16">
+            <button
+              className="bg-gray-50 hover:bg-gray-300 rounded-l-lg border border-r-black px-2"
+              onClick={() => table.setPageIndex(0)}
+            >
+              <RxDoubleArrowLeft size={22} />
+            </button>
+            <button
+              className="bg-gray-50 hover:bg-gray-300 border border-r-black px-2"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <RxChevronLeft size={22} />
+            </button>
+            <button
+              className="bg-gray-50 hover:bg-gray-300 border border-r-black px-2"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              <RxChevronRight size={22} />
+            </button>
+            <button
+              className="bg-gray-50 hover:bg-gray-300 rounded-r-lg px-2"
+              onClick={() => table.setPageIndex(!table.getPageCount() - 1)}
+            >
+              <RxDoubleArrowRight size={22} />
+            </button>
+          </div>
         </div>
       </div>
     </>
