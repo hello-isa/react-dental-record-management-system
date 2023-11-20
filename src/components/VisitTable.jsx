@@ -84,7 +84,10 @@ function VisitTable() {
         <div className="flex flex-row justify-between mb-6">
           {/* Add Visit */}
           <div>
-            <button className="rounded-lg border-2 h-10 w-40 bg-green-400 hover:bg-green-600 text-white inline-flex items-center px-8" onClick={() => setShowModal(true)}>
+            <button
+              className="rounded-lg border-2 h-10 w-40 bg-green-400 hover:bg-green-600 text-white inline-flex items-center px-8"
+              onClick={() => setShowModal(true)}
+            >
               <AiOutlinePlus className="mr-2" />
               Add Visit
             </button>
@@ -92,7 +95,10 @@ function VisitTable() {
 
           {/* Add Visit Modal */}
           <div>
-            <AddVisitModal isVisible={showModal} onClose={() => setShowModal(false)} />
+            <AddVisitModal
+              isVisible={showModal}
+              onClose={() => setShowModal(false)}
+            />
           </div>
 
           {/* Filtering */}
