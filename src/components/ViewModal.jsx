@@ -16,7 +16,9 @@ function ViewModal({ isVisible, onClose }) {
             <IoMdCloseCircleOutline />
           </button>
           {/* Modal content */}
-          <div className="bg-white p-4 rounded-md">Modal</div>
+          <div className="bg-white p-4 rounded-md">
+            <div className="grid grid-cols-2 gap-4"></div>
+          </div>
         </div>
       </div>
     </>
