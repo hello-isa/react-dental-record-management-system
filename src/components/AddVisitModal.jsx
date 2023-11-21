@@ -26,7 +26,7 @@ function AddVisitModal({ isVisible, onClose }) {
             <IoMdCloseCircleOutline />
           </button>
           {/* Modal content */}
-          <div className="bg-white p-4 rounded-md ">
+          <div className="bg-white p-4 rounded-md">
             <div className="grid grid-cols-2 gap-4">
               {/* Date picker */}
               <div className=" w-72 mr-3 pr-4">
