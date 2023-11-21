@@ -24,6 +24,8 @@ function VisitTable() {
   const [showModal, setShowModal] = useState(false); // AddVisitModal
   const [showModal2, setShowModal2] = useState(false); // ViewModal
 
+  const [selectedRowData, setSelectedRowData] = useState(null);
+
   // Fetch API Mock Data
   const fetchVisitData = () => {
     const jsonFileUrl =
@@ -160,7 +162,10 @@ function VisitTable() {
                     {/* View Button */}
                     <button
                       className="border-2 rounded-lg px-2 bg-cyan-600 hover:bg-cyan-800 text-white"
-                      onClick={() => setShowModal2(true)}
+                      onClick={() => {
+                        setSelectedRowData(row.original);
+                        setShowModal2(true);
+                      }}
                     >
                       View
                     </button>
@@ -176,6 +181,7 @@ function VisitTable() {
           <ViewModal
             isVisible={showModal2}
             onClose={() => setShowModal2(false)}
+            rowData={selectedRowData}
           />
         </div>
 
