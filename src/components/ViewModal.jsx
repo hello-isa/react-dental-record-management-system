@@ -1,5 +1,6 @@
 import React from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { AiOutlinePlus } from "react-icons/ai";
 
 function ViewModal({ isVisible, onClose, rowData }) {
   if (!isVisible) return null;
@@ -72,6 +73,39 @@ function ViewModal({ isVisible, onClose, rowData }) {
             </div>
 
             <hr className="my-2 border-gray-300 my-6" />
+
+            <div className="mb-4 ml-2 flex flex-row justify-between">
+              <p className=" text-xl">Vital Signs</p>
+              <button
+                className="rounded-lg border-2 h-10 w-40 bg-green-400 hover:bg-green-600 text-white inline-flex items-center px-2"
+                onClick={() => setShowModal(true)}
+              >
+                <AiOutlinePlus className="mr-2" />
+                Add Vital Signs
+              </button>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className=" border border-gray-300 p-2 rounded-lg">
+                <p>
+                  <strong>Temperature:</strong>
+                </p>
+              </div>
+              <div className=" border border-gray-300 p-2 rounded-lg">
+                <p>
+                  <strong>Pulse Rate:</strong>
+                </p>
+              </div>
+              <div className=" border border-gray-300 p-2 rounded-lg">
+                <p>
+                  <strong>Blood Pressure:</strong>
+                </p>
+              </div>
+              <div className=" border border-gray-300 p-2 rounded-lg">
+                <p>
+                  <strong>Time:</strong>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
