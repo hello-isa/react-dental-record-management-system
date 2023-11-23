@@ -112,7 +112,7 @@ function AddVisitModal({ isVisible, onClose }) {
               </div>
             </div>
             {/* Submit button */}
-            <div className="my-5 flex justify-center">
+            <div className="mt-5 flex justify-center">
               <button className="rounded-lg border-2 h-10 w-52  bg-green-400 hover:bg-green-600 text-white">
                 Submit
               </button>

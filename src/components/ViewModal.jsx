@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
+import VitalSignModal from "./VitalSignModal";
 
 function ViewModal({ isVisible, onClose, rowData }) {
   if (!isVisible) return null;
+
+  const [showModal3, setShowModal3] = useState(false);
 
   return (
     <>
@@ -78,7 +81,7 @@ function ViewModal({ isVisible, onClose, rowData }) {
               <p className=" text-xl">Vital Signs</p>
               <button
                 className="rounded-lg border-2 h-10 w-40 bg-green-400 hover:bg-green-600 text-white inline-flex items-center px-2"
-                onClick={() => setShowModal(true)}
+                onClick={() => setShowModal3(true)}
               >
                 <AiOutlinePlus className="mr-2" />
                 Add Vital Signs
@@ -109,6 +112,10 @@ function ViewModal({ isVisible, onClose, rowData }) {
           </div>
         </div>
       </div>
+      <VitalSignModal
+        isVisible={showModal3}
+        onClose={() => setShowModal3(false)}
+      />
     </>
   );
 }
