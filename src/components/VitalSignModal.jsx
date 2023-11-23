@@ -34,14 +34,25 @@ function VitalSignModal({ isVisible, onClose }) {
                 placeholder="Pulse Rate"
               />
             </div>
-            {/* Blood pressure input box */}
-            <div className="mb-4">
-              <input
-                className="w-full  pl-3 rounded-lg border border-gray-300 h-10"
-                type="text"
-                min={0}
-                placeholder="Blood Pressure"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              {/* Blood pressure input box */}
+              <div className="mb-4">
+                <input
+                  className="w-full  pl-3 rounded-lg border border-gray-300 h-10"
+                  type="text"
+                  min={0}
+                  placeholder="Systolic BP"
+                />
+              </div>
+              {/* Blood pressure input box */}
+              <div className="mb-4">
+                <input
+                  className="w-full  pl-3 rounded-lg border border-gray-300 h-10"
+                  type="text"
+                  min={0}
+                  placeholder="Diastolic BP"
+                />
+              </div>
             </div>
             {/* Time input box */}
             <div className="mb-4">
